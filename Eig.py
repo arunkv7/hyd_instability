@@ -40,7 +40,7 @@ eigenvalue problems, we take the standard approach:
         B = [[I,0],[0,-A2]].
 """
 
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 import time
 import numpy as np
 from scipy.linalg import eig
@@ -134,13 +134,15 @@ def BeamEig(N,L,bc1,bc2):
     aLHS_k = np.zeros((2*nLHS_k,2*nLHS_k))
     aLHS_k[:nLHS_k,(nLHS_k):] = np.eye(nLHS_k)
     aLHS_k[(nLHS_k):,:nLHS_k] = LHS_k
-    print(aLHS_k)
+    print(aLHS_k, 'alhsk')
     s, aY_k = eig(aLHS_k)   #Solve augmented eigenvalue problem
+    print(aY_k)
     Y_k = aY_k[:nLHS_k,:]
     print('elapsed time is ',time.time() - t,' seconds')
     
     #### Remove very large eigenmodes (assuming that they are stable)
     ret = np.where((np.abs(s) < 200))[0]
+    print(s, len(s))
     s = s[ret]
     Y_k = Y_k[:,ret]
 
@@ -153,21 +155,21 @@ def BeamEig(N,L,bc1,bc2):
 
 # this is only accessed if running directly
 if __name__ == '__main__':
-    s, Y, x = BeamEig(6,0.5,'clamped','clamped')
+    s, Y, x = BeamEig(10,0.5,'clamped','clamped')
     
     print ('Eigenvalues are: \n',s)
 
-    # plt.figure();
-    # aa = np.argmin(np.abs(np.imag(s)))
-    # plt.plot(x,np.real(Y[:,aa]),'-.')
-    # plt.plot(x,np.imag(Y[:,aa]),'-')
-    # plt.legend(['Yreal','Yimag']);
-    # plt.xlabel('x');plt.ylabel('Y')
-    # plt.title('Eigenfunction for '+str(s[aa].real)+' '+str(s[aa].imag)+'j')
+    plt.figure();
+    aa = np.argmin(np.abs(np.imag(s)))
+    plt.plot(x,np.real(Y[:,aa]),'-.')
+    plt.plot(x,np.imag(Y[:,aa]),'-')
+    plt.legend(['Yreal','Yimag']);
+    plt.xlabel('x');plt.ylabel('Y')
+    plt.title('Eigenfunction for '+str(s[aa].real)+' '+str(s[aa].imag)+'j')
 
-    # plt.figure();
-    # plt.plot(x,np.real(Y),'-.')
-    # plt.plot(x,np.imag(Y),'-')
-    # plt.xlabel('x');plt.ylabel('Y')
-    # plt.title('All eigenfunctions')
-    # plt.show() 
+    plt.figure();
+    plt.plot(x,np.real(Y),'-.')
+    plt.plot(x,np.imag(Y),'-')
+    plt.xlabel('x');plt.ylabel('Y')
+    plt.title('All eigenfunctions')
+    plt.show() 
