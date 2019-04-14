@@ -93,7 +93,6 @@
 
 \RequirePackage[bookmarks,%
             breaklinks,%
-            backref=false,%
             pdfhighlight=/I,%
             pdffitwindow=true,%
             pdfstartview=Fit,%

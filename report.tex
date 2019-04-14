@@ -1,0 +1,78 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\title{AE718 Assignment \#3}
+\author{Pawan Singh Negi (174010003) }
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{ragged2e}
+\usepackage{tcolorbox}
+
+\geometry{margin=0.5in}
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+        \noindent
+        \centering{\textbf{Implementation}}
+
+          \hspace{5mm}
+{\footnotesize
+\lstinputlisting[language=Python]{./rayleigh_benard.py}}
+
+
+	\newpage
+        \centering{\textbf{Results}}
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./free-free_T_plot.pdf}
+        \end{figure}
+
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./free-free_W_plot.pdf}
+        \end{figure}
+
+  \newpage
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./rigid-rigid_T_plot.pdf}
+        \end{figure}
+
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./rigid-rigid_W_plot.pdf}
+        \end{figure}
+
+   \newpage
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./free-rigid_T_plot.pdf}
+        \end{figure}
+
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./free-rigid_W_plot.pdf}
+        \end{figure}
+
+   \newpage
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./rigid-free_T_plot.pdf}
+        \end{figure}
+
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./rigid-free_W_plot.pdf}
+        \end{figure}
+
+   \newpage
+        \begin{figure}[h!]
+          \centering
+          \includegraphics{./streamlines.pdf}
+        \end{figure}
+
+          \hspace{5mm}
+\end{document}
